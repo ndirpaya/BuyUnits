@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class DenyIfNotAdmin
+class RedirectIfNotAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,7 @@ class DenyIfNotAdmin
     public function handle($request, Closure $next, $guard = 'admin_user')
     {
         if(! \Auth::guard($guard)->check()){
-            return response("Access denied", 403);
-//            abort(403);
+            return redirect('/admin_login');
         }
         return $next($request);
     }

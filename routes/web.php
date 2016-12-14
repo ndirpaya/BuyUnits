@@ -30,4 +30,9 @@ Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@sh
 
 
 Route::get('/home', 'HomeController@index');
-Route::get('/admin_home', 'AdminHomeController@index');
+//Route::get('/admin_home', 'AdminHomeController@index');
+
+
+Route::group(['middleware' => ['admin']], function(){
+    Route::get('/admin_home', 'AdminHomeController@index');
+});
