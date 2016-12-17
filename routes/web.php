@@ -33,6 +33,12 @@ Route::get('/home', 'HomeController@index');
 //Route::get('/admin_home', 'AdminHomeController@index');
 
 
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/my-profile/{id}', 'UserProfileController@showDetails');
+    Route::patch('/my-profile/{id}', 'UserProfileController@updateDetails');
+    Route::resource('transactions', 'UserTransactionsController');
+});
+
 Route::group(['middleware' => ['admin']], function(){
-    Route::get('/admin_home', 'AdminHomeController@index');
+    Route::get('/admin_home', 'Admin\AdminHomeController@index');
 });
