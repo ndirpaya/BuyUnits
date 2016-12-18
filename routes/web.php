@@ -39,7 +39,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('transactions', 'UserTransactionsController');
 });
 
-Route::group(['middleware' => ['admin']], function(){
-    Route::get('/admin_home', 'Admin\AdminHomeController@index');
-    Route::resource('customers', 'CustomersController');
-});
+//Route::group(['prefix' => 'auth'], function(){
+
+    Route::group(['middleware' => ['admin']], function(){
+        Route::get('/admin_home', 'Admin\AdminHomeController@index');
+        Route::resource('/admin/customers', 'Admin\CustomersController');
+        Route::resource('/admin/users', 'Admin\AdminUsersController');
+    });
+
+//});

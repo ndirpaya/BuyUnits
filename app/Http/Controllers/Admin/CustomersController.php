@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\User;
 use Illuminate\Http\Request;
+
+use Illuminate\Routing\Controller;
 
 class CustomersController extends Controller
 {
