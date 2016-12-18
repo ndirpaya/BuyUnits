@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserTransactionsRequest;
-use App\Transaction;
+use App\User;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
-
-class UserTransactionsController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,9 @@ class UserTransactionsController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->where('user_id', Auth::user()->id);
+        $customers = User::all();
 
-        return view('transactions.index', compact('transactions'));
+        return view('admin.customers.index', compact('customers'));
     }
 
     /**
@@ -30,24 +26,18 @@ class UserTransactionsController extends Controller
      */
     public function create()
     {
-        return view('transactions.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserTransactionsRequest|Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserTransactionsRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
-        $user = Auth::user();
-
-//        dd($user->transactions());
-        $user->transactions()->create($input);
-        return redirect('/transactions');
-
+        //
     }
 
     /**
@@ -58,11 +48,8 @@ class UserTransactionsController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::findOrFail($id);
-        if($transaction->user_id == Auth::user()->id){
-            return view('transactions.show', compact('transaction'));
-        }
-        return redirect('transactions');
+        $customer = User::findOrFail($id);
+        return view('admin.customers.show', compact('customer'));
     }
 
     /**

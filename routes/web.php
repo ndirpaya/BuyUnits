@@ -41,4 +41,5 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin_home', 'Admin\AdminHomeController@index');
+    Route::resource('customers', 'CustomersController');
 });
