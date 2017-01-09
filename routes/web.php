@@ -42,9 +42,10 @@ Route::group(['middleware' => ['auth']], function(){
 //Route::group(['prefix' => 'auth'], function(){
 
     Route::group(['middleware' => ['admin']], function(){
-        Route::get('/admin_home', 'Admin\AdminHomeController@index');
+        Route::get('/admin/dashboard', 'Admin\AdminHomeController@index');
         Route::resource('/admin/customers', 'Admin\CustomersController');
         Route::resource('/admin/users', 'Admin\AdminUsersController');
+        Route::resource('/admin/transactions', 'Admin\TransactionsController');
     });
 
 //});
