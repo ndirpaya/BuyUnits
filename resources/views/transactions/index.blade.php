@@ -59,7 +59,7 @@
                                         <button
                                                 type="button"
                                                 rel="tooltip"
-                                                title="View Profile"
+                                                title="View Transaction"
                                                 class="btn btn-info btn-simple btn-xs"
                                                 data-toggle="modal" data-target="#myModal"
                                                 data-id="{{$transaction->id}}"

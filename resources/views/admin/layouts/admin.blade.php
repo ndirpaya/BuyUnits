@@ -61,7 +61,7 @@
                 <div class="copyright">
                     <p class="pull-left sm-pull-reset">
                         <span>Copyright <span class="copyright">©</span> 2016 </span>
-                        <span>THEMES LAB</span>.
+                        <span>BUY UNITS</span>.
                         <span>All rights reserved. </span>
                     </p>
                     <p class="pull-right sm-pull-reset">

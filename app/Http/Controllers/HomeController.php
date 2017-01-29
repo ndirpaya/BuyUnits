@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+//
+//    public function register2()
+//    {
+//        return view('register2');
+//    }
 }

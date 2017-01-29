@@ -6,8 +6,7 @@
     <ul class="dropdown-menu" role="menu">
         <li>
             <a href="{{ url('/admin/logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
             </a>
 
