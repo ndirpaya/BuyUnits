@@ -1,68 +1,94 @@
-@extends('layouts.app')
+@extends('layouts.register')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                <div class="card card-signup">
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="header header-primary text-center">
+                            <h4>LOGIN</h4>
+                            <div class="social-line">
+                                <a href="#pablo" class="btn btn-simple btn-just-icon" data-toggle="tooltip" data-placement="top" title="Login with FACEBOOK">
+                                    <i class="fa fa-facebook-square"></i>
+                                    <p style="font-size: 10px">facebook</p>
+                                </a>
+                                <a href="#pablo" class="btn btn-simple btn-just-icon" data-toggle="tooltip" data-placement="top" title="Login with TWITTER">
+                                    <i class="fa fa-twitter"></i>
+                                    <p style="font-size: 10px">twitter</p>
+                                </a>
+                                <a href="#pablo" class="btn btn-simple btn-just-icon" data-toggle="tooltip" data-placement="top" title="Login with GOOGLE">
+                                    <i class="fa fa-google-plus"></i>
+                                    <p style="font-size: 10px">google</p>
+                                </a>
+                            </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                        <p class="text-divider">Or go old school...</p>
+                        <div class="content">
+
+                            <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">email</i>
+                                                </span>
+                                <input id="email" name="email" type="email" class="form-control" placeholder="Email..." value="{{old('email')}}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
                                 @endif
                             </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                            <div class="input-group{{ $errors->has('password') ? 'has-error' : ''}} "  style="float:left">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                <input id="password" type="password" name="password" placeholder="Password..." class="form-control" required />
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                    <span class="help-block text-center">
+                                            <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember"> Remember Me
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+                            <div class="form-group">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
+                                    <a class="" href="{{ url('/password/reset') }}">
+                                        Forgot Your Password?
+                                    </a>
+                                </div>
                             </div>
+
+
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @endsection
