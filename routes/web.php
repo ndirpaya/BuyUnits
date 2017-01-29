@@ -15,13 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/register2', function(){
-//    return view('auth.register2');
-//});
+Route::get('/register2', function(){
+    return view('auth.register2');
+});
 
 Auth::routes();
 
-//route::get('register2', 'HomeController@register2');
 
 Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm');
 Route::post('admin_login', 'AdminAuth\LoginController@login');
