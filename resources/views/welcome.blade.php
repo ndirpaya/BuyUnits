@@ -9,8 +9,10 @@
                 <div class="brand">
                     <h1>Welcome to BuyUnits</h1>
                     <h3>Sign Up and keep track of payments</h3>
-                    <h3>or pay instantly with Quick buy</h3>
-                    <button class="btn btn-success btn-lg btn-round">Quick Pay</button>
+                    <h3>or pay instantly with Quick Pay</h3>
+                    <button class="btn btn-success btn-lg btn-round"
+                            data-toggle="modal"
+                            data-target="#myModal">Quick Pay</button>
                     {{--<h3>Purchase prepaid units</h3>--}}
                     {{--<h3>or..</h3>--}}
                     {{--<h3>pay postpaid bills</h3>--}}
@@ -107,6 +109,33 @@
     </div>
     </div>
 
+    </div>
+
+    {{-- MODAL CORE --}}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Quick Pay!</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        First name:<br>
+                        <input type="text" name="firstname">
+                        <br>
+                        Last name:<br>
+                        <input type="text" name="lastname">
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info btn-simple">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

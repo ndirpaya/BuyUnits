@@ -44,7 +44,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($transactions as $transaction)
+                            @foreach($transactions as $id => $transaction)
                                 <tr>
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->meter_number }}</td>
@@ -55,16 +55,16 @@
                                     <td>{{ $transaction->created_at }}</td>
 {{--                                    <td>{{ $transaction->updated_at }}</td>--}}
                                     <td class="td-actions text-right">
-                                        <a href="{{route('transactions.show', $transaction->id)}}">
+                                        {{--<a href="{{route('transactions.show', $transaction->id)}}">--}}
                                         <button
                                                 type="button"
                                                 rel="tooltip"
                                                 title="View Transaction"
                                                 class="btn btn-info btn-simple btn-xs"
-                                                data-toggle="modal" data-target="#myModal"
-                                                data-id="{{$transaction->id}}"
-                                                data-title="{{$transaction->meter_number}}"
-                                        >
+                                                data-toggle="modal"
+                                                data-target="#invoiceModal-{{ $id }}"
+                                                data-transaction_id="{{$transaction->id}}"
+                                                data-transaction_title="{{$transaction->meter_number}}">
                                             <i class="fa fa-file-o"></i>
                                         </button>
                                         </a>
@@ -81,13 +81,37 @@
             </div>
 
         </div>
+    </div>
 
 
+    <div class="modal fade" id="invoiceModal-{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="invoiceModalLabel">INVOICE</h4>
+                    <div class="modal-body">
+                        <p>Transaction id: {{ $transaction->id }}</p>
+                        <p>Meter Number: {{ $transaction->meter_number }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script>
 
+        $('#invoiceModal').on('show.bs.modal', function (event) {
+            var transactionId = $(event.relatedTarget).data('transaction_id');
+            var transactionTitle = $(event.relatedTarget).data('transaction_title');
 
+            var modal = $(this);
+            modal.find('.modal-title').text
+        })
 
+    </script>
 @stop
+
 
         {{--<!-- Modal Core -->--}}
         {{--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
